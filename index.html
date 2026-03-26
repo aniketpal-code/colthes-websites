@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Urban Drip — Men's Fashion | Surat</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #f5f0e8;
+  --cream: #ede8dc;
+  --accent: #c8a96e;
+  --accent2: #e63946;
+  --gray: #2a2a2a;
+  --lightgray: #444;
+  --text-muted: #888;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--accent);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,169,110,0.2);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;color:var(--accent);cursor:pointer;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--white);text-decoration:none;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.8;transition:opacity 0.2s;}
+.nav-links a:hover{opacity:1;color:var(--accent);}
+.nav-cta{background:var(--accent);color:var(--black);border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.nav-cta:hover{background:var(--white);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:24px;height:2px;background:var(--white);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 2.5rem;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1206 50%,#0a0a0a 100%);}
+.hero-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--accent) 0,var(--accent) 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);padding:6px 16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,10rem);line-height:0.9;letter-spacing:2px;margin-bottom:1.5rem;}
+.hero h1 span{color:var(--accent);display:block;}
+.hero h1 em{font-family:'Playfair Display',serif;font-size:0.45em;color:var(--text-muted);display:block;letter-spacing:4px;margin-top:0.5rem;}
+.hero-desc{font-size:15px;line-height:1.8;color:rgba(245,240,232,0.6);max-width:420px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-gold{background:var(--accent);color:var(--black);border:none;padding:14px 32px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-gold:hover{background:var(--white);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(245,240,232,0.3);padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2rem;z-index:2;}
+.stat{text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--accent);line-height:1;}
+.stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollLine 2s infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* MARQUEE */
+.marquee-section{padding:1.2rem 0;background:var(--accent);overflow:hidden;}
+.marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;width:max-content;}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--black);padding:0 2rem;white-space:nowrap;}
+.marquee-dot{color:rgba(10,10,10,0.4);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTION COMMON */
+section{padding:5rem 2.5rem;}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1;margin-bottom:1rem;}
+.section-sub{font-size:14px;color:var(--text-muted);max-width:480px;line-height:1.7;}
+
+/* CATEGORIES */
+.categories{background:var(--gray);}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5px;margin-top:3rem;background:rgba(200,169,110,0.1);}
+.cat-item{background:var(--black);padding:2.5rem 1.5rem;text-align:center;cursor:pointer;transition:all 0.3s;border:1px solid transparent;}
+.cat-item:hover{background:var(--gray);border-color:var(--accent);}
+.cat-icon{font-size:2.5rem;margin-bottom:1rem;}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;margin-bottom:0.25rem;}
+.cat-count{font-size:11px;color:var(--text-muted);letter-spacing:1px;}
+
+/* PRODUCTS */
+.products-section{background:var(--black);}
+.filter-bar{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap;align-items:center;}
+.filter-btn{background:transparent;color:var(--text-muted);border:1px solid rgba(255,255,255,0.1);padding:8px 20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:var(--black);border-color:var(--accent);}
+.price-filter{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px;color:var(--text-muted);}
+.price-filter input{width:120px;accent-color:var(--accent);}
+#price-display{color:var(--accent);font-weight:600;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:rgba(200,169,110,0.08);}
+.product-card{background:var(--black);position:relative;overflow:hidden;cursor:pointer;transition:transform 0.3s;}
+.product-card:hover{transform:translateY(-4px);}
+.product-card:hover .product-overlay{opacity:1;}
+.product-img{height:320px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+.product-img.bg1{background:linear-gradient(135deg,#1a1a2e,#16213e);}
+.product-img.bg2{background:linear-gradient(135deg,#1a0a0a,#2d1515);}
+.product-img.bg3{background:linear-gradient(135deg,#0a1a0a,#152d15);}
+.product-img.bg4{background:linear-gradient(135deg,#1a1206,#2d2010);}
+.product-img.bg5{background:linear-gradient(135deg,#150a1a,#261535);}
+.product-img.bg6{background:linear-gradient(135deg,#0a1520,#103050);}
+.product-badge{position:absolute;top:12px;left:12px;background:var(--accent2);color:white;font-size:10px;font-weight:600;letter-spacing:1px;padding:4px 10px;text-transform:uppercase;}
+.product-badge.new{background:var(--accent);color:var(--black);}
+.product-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;transition:opacity 0.3s;}
+.overlay-btn{background:var(--accent);color:var(--black);border:none;padding:10px 24px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;width:160px;font-family:'DM Sans',sans-serif;}
+.overlay-btn.wh{background:white;}
+.product-info{padding:1.25rem;}
+.product-name{font-weight:600;font-size:15px;margin-bottom:4px;}
+.product-sub{font-size:12px;color:var(--text-muted);margin-bottom:10px;}
+.product-footer{display:flex;align-items:center;justify-content:space-between;}
+.product-price{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--accent);}
+.product-price-old{font-size:12px;color:var(--text-muted);text-decoration:line-through;margin-left:6px;}
+.product-sizes{display:flex;gap:4px;}
+.size-dot{width:22px;height:22px;border:1px solid rgba(255,255,255,0.15);font-size:9px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);}
+.no-results{text-align:center;padding:4rem;color:var(--text-muted);display:none;grid-column:1/-1;}
+.no-results.show{display:block;}
+
+/* FEATURES */
+.features{background:var(--gray);}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5px;margin-top:3rem;background:rgba(200,169,110,0.08);}
+.feat-item{background:var(--gray);padding:2rem;border:1px solid transparent;transition:border-color 0.3s;}
+.feat-item:hover{border-color:rgba(200,169,110,0.3);}
+.feat-icon{font-size:1.8rem;margin-bottom:1rem;}
+.feat-title{font-weight:600;font-size:15px;margin-bottom:0.5rem;}
+.feat-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+/* REVIEWS */
+.reviews{background:var(--black);}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;}
+.review-card{background:var(--gray);padding:1.75rem;border:1px solid rgba(200,169,110,0.1);position:relative;}
+.review-card::before{content:'"';position:absolute;top:-10px;right:20px;font-family:'Playfair Display',serif;font-size:5rem;color:var(--accent);opacity:0.3;line-height:1;}
+.stars{color:var(--accent);font-size:14px;letter-spacing:2px;margin-bottom:1rem;}
+.review-text{font-size:14px;line-height:1.8;color:rgba(245,240,232,0.7);margin-bottom:1.5rem;}
+.reviewer{display:flex;align-items:center;gap:12px;}
+.reviewer-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--black);}
+.reviewer-name{font-weight:600;font-size:14px;}
+.reviewer-loc{font-size:11px;color:var(--text-muted);}
+.rating-summary{display:flex;align-items:center;gap:2rem;margin-top:3rem;padding:2rem;background:var(--gray);border:1px solid rgba(200,169,110,0.15);}
+.big-rating{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--accent);line-height:1;}
+.rating-bars{flex:1;}
+.rbar{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px;color:var(--text-muted);}
+.rbar-track{flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;}
+.rbar-fill{height:100%;background:var(--accent);border-radius:2px;}
+
+/* ORDER */
+.order-section{background:var(--gray);}
+.order-form{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;max-width:800px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
+.form-group input,.form-group select,.form-group textarea{background:var(--black);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group select option{background:var(--black);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.submit-btn{background:var(--accent);color:var(--black);border:none;padding:16px 40px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;width:100%;}
+.submit-btn:hover{background:var(--white);}
+
+/* CONTACT */
+.contact{background:var(--black);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:2rem;}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;}
+.contact-icon{width:44px;height:44px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.contact-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.contact-val{font-size:15px;color:var(--white);}
+.contact-val a{color:var(--white);text-decoration:none;}
+.contact-val a:hover{color:var(--accent);}
+.whatsapp-btn{display:flex;align-items:center;gap:12px;background:#25d366;color:white;border:none;padding:14px 28px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all 0.2s;text-decoration:none;margin-top:1rem;width:fit-content;}
+.whatsapp-btn:hover{background:#1ebe5c;transform:translateY(-2px);}
+.map-placeholder{background:var(--gray);border:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:1rem;text-align:center;padding:2rem;}
+.map-placeholder p{font-size:13px;color:var(--text-muted);}
+
+/* FOOTER */
+footer{background:var(--gray);padding:3rem 2.5rem 1.5rem;border-top:1px solid rgba(200,169,110,0.15);}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:3px;color:var(--accent);margin-bottom:0.75rem;}
+.footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:260px;}
+.footer-col h4{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted);}
+
+/* ORDER MODAL */
+.modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:1rem;}
+.modal.open{display:flex;}
+.modal-box{background:var(--gray);max-width:500px;width:100%;padding:2.5rem;position:relative;border:1px solid rgba(200,169,110,0.2);max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer;}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:0.5rem;color:var(--accent);}
+.modal-product{font-size:13px;color:var(--text-muted);margin-bottom:1.5rem;}
+.success-msg{display:none;text-align:center;padding:2rem;}
+.success-msg.show{display:block;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding:0 1.5rem;}
+  .hero-stats{display:none;}
+  .hero h1{font-size:4.5rem;}
+  section{padding:3.5rem 1.5rem;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .order-form{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;gap:0.5rem;text-align:center;}
+  .rating-summary{flex-direction:column;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:3.2rem;}
+}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="scrollTo(0,0)">URBAN DRIP</div>
+  <ul class="nav-links">
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('order-modal').classList.add('open')">Order Now</button>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-tag">Now Open in Surat</div>
+    <h1>URBAN<span>DRIP</span><em>Men's Fashion House</em></h1>
+    <p class="hero-desc">Premium menswear crafted for the modern man. From streetwear to formal — we have every style for every occasion.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-gold">Shop Collection</a>
+      <a href="https://wa.me/918853887279?text=Hi%20Urban%20Drip!%20I%20want%20to%20place%20an%20order." target="_blank" class="btn-outline">WhatsApp Order</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Styles</div></div>
+    <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Rating</div></div>
+    <div class="stat"><div class="stat-num">2K+</div><div class="stat-label">Customers</div></div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">URBAN DRIP</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">SURAT'S FINEST</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">MEN'S FASHION</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">PREMIUM QUALITY</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">NEW ARRIVALS</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">FREE DELIVERY</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">URBAN DRIP</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">SURAT'S FINEST</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">MEN'S FASHION</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">PREMIUM QUALITY</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">NEW ARRIVALS</span><span class="marquee-dot"> ✦ </span>
+    <span class="marquee-item">FREE DELIVERY</span><span class="marquee-dot"> ✦ </span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="fade-in">
+    <p class="section-label">Collections</p>
+    <h2 class="section-title">SHOP BY CATEGORY</h2>
+    <p class="section-sub">Everything a man needs — all under one roof at Urban Drip, Surat.</p>
+  </div>
+  <div class="cat-grid fade-in">
+    <div class="cat-item" onclick="filterProducts('tshirt')">
+      <div class="cat-icon">👕</div>
+      <div class="cat-name">T-Shirts</div>
+      <div class="cat-count">80+ Styles</div>
+    </div>
+    <div class="cat-item" onclick="filterProducts('shirt')">
+      <div class="cat-icon">👔</div>
+      <div class="cat-name">Shirts</div>
+      <div class="cat-count">60+ Styles</div>
+    </div>
+    <div class="cat-item" onclick="filterProducts('jeans')">
+      <div class="cat-icon">👖</div>
+      <div class="cat-name">Jeans & Pants</div>
+      <div class="cat-count">50+ Styles</div>
+    </div>
+    <div class="cat-item" onclick="filterProducts('jacket')">
+      <div class="cat-icon">🧥</div>
+      <div class="cat-name">Jackets</div>
+      <div class="cat-count">30+ Styles</div>
+    </div>
+    <div class="cat-item" onclick="filterProducts('formal')">
+      <div class="cat-icon">🤵</div>
+      <div class="cat-name">Formal Wear</div>
+      <div class="cat-count">40+ Styles</div>
+    </div>
+    <div class="cat-item" onclick="filterProducts('ethnic')">
+      <div class="cat-icon">🧵</div>
+      <div class="cat-name">Ethnic Wear</div>
+      <div class="cat-count">35+ Styles</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="fade-in">
+    <p class="section-label">Our Collection</p>
+    <h2 class="section-title">LATEST DROPS</h2>
+  </div>
+  <div class="filter-bar fade-in">
+    <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+    <button class="filter-btn" onclick="filterProducts('tshirt',this)">T-Shirts</button>
+    <button class="filter-btn" onclick="filterProducts('shirt',this)">Shirts</button>
+    <button class="filter-btn" onclick="filterProducts('jeans',this)">Jeans</button>
+    <button class="filter-btn" onclick="filterProducts('jacket',this)">Jackets</button>
+    <button class="filter-btn" onclick="filterProducts('formal',this)">Formal</button>
+    <button class="filter-btn" onclick="filterProducts('ethnic',this)">Ethnic</button>
+    <div class="price-filter">
+      <span>Max: ₹<span id="price-display">5000</span></span>
+      <input type="range" min="299" max="5000" value="5000" step="100" oninput="filterByPrice(this.value)"/>
+    </div>
+  </div>
+  <div class="products-grid" id="products-grid">
+    <!-- Products injected by JS -->
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="fade-in">
+    <p class="section-label">Why Us</p>
+    <h2 class="section-title">THE URBAN DRIP PROMISE</h2>
+  </div>
+  <div class="feat-grid fade-in">
+    <div class="feat-item">
+      <div class="feat-icon">🚚</div>
+      <div class="feat-title">Free Delivery in Surat</div>
+      <div class="feat-desc">Same-day delivery available within Surat city. Orders above ₹999 ship free across India.</div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">💎</div>
+      <div class="feat-title">Premium Quality</div>
+      <div class="feat-desc">Hand-picked fabrics and carefully crafted pieces. Only the best reaches your wardrobe.</div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">Easy Returns</div>
+      <div class="feat-desc">Not happy? Return within 7 days — no questions asked. Customer satisfaction is our priority.</div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">💬</div>
+      <div class="feat-title">WhatsApp Support</div>
+      <div class="feat-desc">Chat directly with us on WhatsApp for order tracking, size help, or any queries anytime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="fade-in">
+    <p class="section-label">Testimonials</p>
+    <h2 class="section-title">WHAT CUSTOMERS SAY</h2>
+  </div>
+  <div class="reviews-grid fade-in">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Best men's clothing store in Surat! The quality is amazing and the delivery was super fast. Totally recommend Urban Drip to everyone.</p>
+      <div class="reviewer"><div class="reviewer-avatar">RK</div><div><div class="reviewer-name">Rahul Kumar</div><div class="reviewer-loc">Surat, Gujarat</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Ordered 3 shirts via WhatsApp and received them the same evening. The fabric quality is top notch. Aniket bhai is very helpful!</p>
+      <div class="reviewer"><div class="reviewer-avatar">MS</div><div><div class="reviewer-name">Meet Shah</div><div class="reviewer-loc">Adajan, Surat</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p class="review-text">Great variety of ethnic wear. Bought a kurta set for a wedding — looked absolutely stunning. Will definitely shop again.</p>
+      <div class="reviewer"><div class="reviewer-avatar">JP</div><div><div class="reviewer-name">Jay Patel</div><div class="reviewer-loc">Vesu, Surat</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">My go-to store for casual and formal wear. Prices are very reasonable for the quality you get. 10/10 experience every time.</p>
+      <div class="reviewer"><div class="reviewer-avatar">AD</div><div><div class="reviewer-name">Aryan Desai</div><div class="reviewer-loc">Katargam, Surat</div></div></div>
+    </div>
+  </div>
+  <div class="rating-summary fade-in">
+    <div>
+      <div class="big-rating">4.9</div>
+      <div class="stars" style="font-size:18px;">★★★★★</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Based on 200+ reviews</div>
+    </div>
+    <div class="rating-bars">
+      <div class="rbar"><span style="min-width:12px;">5★</span><div class="rbar-track"><div class="rbar-fill" style="width:85%"></div></div><span>85%</span></div>
+      <div class="rbar"><span style="min-width:12px;">4★</span><div class="rbar-track"><div class="rbar-fill" style="width:10%"></div></div><span>10%</span></div>
+      <div class="rbar"><span style="min-width:12px;">3★</span><div class="rbar-track"><div class="rbar-fill" style="width:3%"></div></div><span>3%</span></div>
+      <div class="rbar"><span style="min-width:12px;">2★</span><div class="rbar-track"><div class="rbar-fill" style="width:1%"></div></div><span>1%</span></div>
+      <div class="rbar"><span style="min-width:12px;">1★</span><div class="rbar-track"><div class="rbar-fill" style="width:1%"></div></div><span>1%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER SECTION -->
+<section class="order-section" id="order">
+  <div class="fade-in">
+    <p class="section-label">Online Order</p>
+    <h2 class="section-title">PLACE YOUR ORDER</h2>
+    <p class="section-sub">Fill in your details and we'll confirm your order via WhatsApp within minutes.</p>
+  </div>
+  <form class="order-form fade-in" onsubmit="submitOrder(event)">
+    <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your full name" required/></div>
+    <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your WhatsApp number" required/></div>
+    <div class="form-group"><label>Product / Item</label><input type="text" placeholder="e.g. Blue Slim Shirt, L size" required/></div>
+    <div class="form-group"><label>Category</label>
+      <select>
+        <option>T-Shirt</option><option>Shirt</option><option>Jeans / Pants</option><option>Jacket</option><option>Formal Wear</option><option>Ethnic Wear</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Size</label>
+      <select><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>XXL</option></select>
+    </div>
+    <div class="form-group"><label>Quantity</label><input type="number" value="1" min="1" max="10"/></div>
+    <div class="form-group full"><label>Delivery Address</label><textarea placeholder="Full address with pincode..."></textarea></div>
+    <div class="form-group full"><button type="submit" class="submit-btn">Place Order via WhatsApp ↗</button></div>
+  </form>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="fade-in">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">CONTACT US</h2>
+  </div>
+  <div class="contact-grid fade-in">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">👤</div>
+        <div><div class="contact-label">Owner</div><div class="contact-val">Aniket Pal</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-val"><a href="tel:+918853887279">+91 8853887279</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><div class="contact-label">Location</div><div class="contact-val">Urban Drip Store, Surat, Gujarat, India</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div><div class="contact-label">Store Hours</div><div class="contact-val">Mon–Sat: 10am – 9pm<br/>Sunday: 11am – 7pm</div></div>
+      </div>
+      <a class="whatsapp-btn" href="https://wa.me/918853887279?text=Hi%20Aniket!%20I%20visited%20Urban%20Drip%20website%20and%20I%20want%20to%20know%20more." target="_blank">
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+    <div>
+      <div class="map-placeholder">
+        <div style="font-size:3rem;">📍</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;">Find Us in Surat</h3>
+        <p>Urban Drip — Surat, Gujarat</p>
+        <a href="https://www.google.com/maps/search/Urban+Drip+Surat" target="_blank" class="btn-gold" style="margin-top:1rem;font-size:12px;padding:10px 24px;">Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">URBAN DRIP</div>
+      <p class="footer-tagline">Surat's premier men's fashion destination. Style that speaks before you do.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#products">T-Shirts</a></li>
+        <li><a href="#products">Shirts</a></li>
+        <li><a href="#products">Jeans & Pants</a></li>
+        <li><a href="#products">Jackets</a></li>
+        <li><a href="#products">Formal Wear</a></li>
+        <li><a href="#products">Ethnic Wear</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#order">Place Order</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wa.me/918853887279" target="_blank">WhatsApp Us</a></li>
+        <li><a href="tel:+918853887279">Call Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Urban Drip. All rights reserved. | Surat, Gujarat</span>
+    <span>Made with ❤️ for Aniket Pal</span>
+  </div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal" id="order-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('order-modal').classList.remove('open')">✕</button>
+    <div id="modal-form-view">
+      <div class="modal-title">QUICK ORDER</div>
+      <div class="modal-product">Urban Drip — Surat</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="form-group"><label>Your Name</label><input type="text" id="mo-name" placeholder="Full name"/></div>
+        <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="mo-phone" placeholder="10-digit number"/></div>
+        <div class="form-group"><label>What do you want?</label><input type="text" id="mo-item" placeholder="e.g. Black hoodie XL, 2 pcs"/></div>
+        <button class="submit-btn" onclick="sendWhatsappOrder()">Send Order on WhatsApp ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const products = [
+  {id:1,name:"Street Classic Tee",sub:"100% Cotton Premium",price:599,oldPrice:999,cat:"tshirt",badge:"Sale",badgeType:"",bg:"bg1",icon:"👕",sizes:["S","M","L","XL"]},
+  {id:2,name:"Oxford Slim Shirt",sub:"Formal & Casual Wear",price:1299,oldPrice:1799,cat:"shirt",badge:"New",badgeType:"new",bg:"bg2",icon:"👔",sizes:["M","L","XL","XXL"]},
+  {id:3,name:"Slim Fit Jeans",sub:"Stretchable Denim",price:1499,oldPrice:2199,cat:"jeans",badge:"Sale",badgeType:"",bg:"bg3",icon:"👖",sizes:["30","32","34","36"]},
+  {id:4,name:"Bomber Jacket",sub:"Winter Essential",price:2499,oldPrice:3999,cat:"jacket",badge:"Hot",badgeType:"",bg:"bg4",icon:"🧥",sizes:["M","L","XL"]},
+  {id:5,name:"3-Piece Suit",sub:"Premium Formal Wear",price:4999,oldPrice:7999,cat:"formal",badge:"Premium",badgeType:"new",bg:"bg5",icon:"🤵",sizes:["38","40","42","44"]},
+  {id:6,name:"Kurta Set",sub:"Festive Ethnic Wear",price:1899,oldPrice:2499,cat:"ethnic",badge:"New",badgeType:"new",bg:"bg1",icon:"🧵",sizes:["S","M","L","XL"]},
+  {id:7,name:"Graphic Oversized Tee",sub:"Streetwear Drop",price:799,oldPrice:1199,cat:"tshirt",badge:"New",badgeType:"new",bg:"bg6",icon:"🎨",sizes:["S","M","L","XL","XXL"]},
+  {id:8,name:"Linen Casual Shirt",sub:"Summer Breeze",price:999,oldPrice:1499,cat:"shirt",badge:"",badgeType:"",bg:"bg3",icon:"🌿",sizes:["M","L","XL"]},
+  {id:9,name:"Cargo Pants",sub:"Utility Streetwear",price:1299,oldPrice:1999,cat:"jeans",badge:"Sale",badgeType:"",bg:"bg4",icon:"🪖",sizes:["30","32","34","36","38"]},
+  {id:10,name:"Sherwani Set",sub:"Wedding Special",price:4499,oldPrice:6999,cat:"ethnic",badge:"Premium",badgeType:"new",bg:"bg2",icon:"✨",sizes:["38","40","42","44"]},
+  {id:11,name:"Puffer Jacket",sub:"Winter Warmth",price:1999,oldPrice:3499,cat:"jacket",badge:"Sale",badgeType:"",bg:"bg5",icon:"❄️",sizes:["M","L","XL","XXL"]},
+  {id:12,name:"Formal Trousers",sub:"Office Ready",price:1199,oldPrice:1699,cat:"formal",badge:"",badgeType:"",bg:"bg6",icon:"💼",sizes:["30","32","34","36"]},
+];
+
+let currentFilter = 'all';
+let maxPrice = 5000;
+
+function renderProducts(){
+  const grid = document.getElementById('products-grid');
+  const filtered = products.filter(p => (currentFilter==='all' || p.cat===currentFilter) && p.price<=maxPrice);
+  if(filtered.length===0){
+    grid.innerHTML='<div class="no-results show"><p style="font-size:2rem;margin-bottom:1rem;">🔍</p><p>No products found. Try a different filter or price range.</p></div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(p=>`
+    <div class="product-card">
+      <div class="product-img ${p.bg}">
+        <span style="font-size:4rem;">${p.icon}</span>
+        ${p.badge?`<div class="product-badge ${p.badgeType}">${p.badge}</div>`:''}
+        <div class="product-overlay">
+          <button class="overlay-btn" onclick="openQuickOrder('${p.name}')">Quick Order</button>
+          <a class="overlay-btn wh" href="https://wa.me/918853887279?text=Hi!%20I%20want%20to%20order%20${encodeURIComponent(p.name)}%20from%20Urban%20Drip" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-sub">${p.sub}</div>
+        <div class="product-footer">
+          <div>
+            <span class="product-price">₹${p.price.toLocaleString()}</span>
+            <span class="product-price-old">₹${p.oldPrice.toLocaleString()}</span>
+          </div>
+          <div class="product-sizes">${p.sizes.slice(0,3).map(s=>`<div class="size-dot">${s}</div>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProducts(cat, btn){
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderProducts();
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+function filterByPrice(val){
+  maxPrice = parseInt(val);
+  document.getElementById('price-display').textContent = parseInt(val).toLocaleString();
+  renderProducts();
+}
+
+function openQuickOrder(productName){
+  document.getElementById('mo-item').value = productName;
+  document.getElementById('order-modal').classList.add('open');
+}
+
+function sendWhatsappOrder(){
+  const name = document.getElementById('mo-name').value.trim();
+  const phone = document.getElementById('mo-phone').value.trim();
+  const item = document.getElementById('mo-item').value.trim();
+  if(!name||!phone||!item){alert('Please fill all fields!');return;}
+  const msg = `Hi Aniket! I want to place an order from Urban Drip.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Order:* ${encodeURIComponent(item)}`;
+  window.open(`https://wa.me/918853887279?text=${msg}`,'_blank');
+  document.getElementById('order-modal').classList.remove('open');
+}
+
+function submitOrder(e){
+  e.preventDefault();
+  const inputs = e.target.querySelectorAll('input,textarea');
+  let name='',phone='',item='',address='';
+  inputs.forEach((inp,i)=>{
+    if(i===0) name=inp.value;
+    if(i===1) phone=inp.value;
+    if(i===2) item=inp.value;
+    if(i===4) address=inp.value;
+  });
+  const msg = `Hi Aniket! New order from Urban Drip website.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Item:* ${encodeURIComponent(item)}%0A*Address:* ${encodeURIComponent(address)}`;
+  window.open(`https://wa.me/918853887279?text=${msg}`,'_blank');
+}
+
+function toggleMenu(){
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display==='flex'?'none':'flex';
+  links.style.flexDirection='column';
+  links.style.position='absolute';
+  links.style.top='60px';
+  links.style.left='0';
+  links.style.right='0';
+  links.style.background='#0a0a0a';
+  links.style.padding='1rem 2rem';
+  links.style.borderBottom='1px solid rgba(200,169,110,0.2)';
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// Close modal on outside click
+document.getElementById('order-modal').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('open');
+});
+
+renderProducts();
+</script>
+</body>
+</html>
